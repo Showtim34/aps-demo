@@ -1,24 +1,24 @@
 services:
   db:
     image: postgres:16-alpine
-    container_name: aps_lab_db
+    container_name: monitor_db
     environment:
-      POSTGRES_DB: apslab
-      POSTGRES_USER: apslab
-      POSTGRES_PASSWORD: apslab
+      POSTGRES_DB: monitor
+      POSTGRES_USER: monitor
+      POSTGRES_PASSWORD: monitor
     ports:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U apslab -d apslab"]
+      test: ["CMD-SHELL", "pg_isready -U monitor -d monitor"]
       interval: 5s
       timeout: 5s
       retries: 10
 
   mosquitto:
     image: eclipse-mosquitto:2
-    container_name: aps_lab_mosquitto
+    container_name: monitor_mosquitto
     ports:
       - "1883:1883"
       - "9001:9001"
@@ -28,11 +28,11 @@ services:
   api:
     build:
       context: ./backend
-    container_name: aps_lab_api
+    container_name: monitor_api
     env_file:
       - .env
     environment:
-      DATABASE_URL: postgresql+psycopg://apslab:apslab@db:5432/apslab
+      DATABASE_URL: postgresql+psycopg://monitor:monitor@db:5432/monitor
       APP_ENV: development
       APP_DEBUG: "true"
       API_V1_PREFIX: /api/v1
@@ -41,8 +41,8 @@ services:
       MQTT_HOST: mosquitto
       MQTT_PORT: "1883"
       MQTT_WS_URL: ws://localhost:9001
-      MQTT_TELEMETRY_TOPIC: aps/telemetry/measurements
-      MQTT_EVENTS_TOPIC_PREFIX: aps/events
+      MQTT_TELEMETRY_TOPIC: monitor/telemetry/measurements
+      MQTT_EVENTS_TOPIC_PREFIX: monitor/events
     ports:
       - "8000:8000"
     volumes:
@@ -57,7 +57,7 @@ services:
   front:
     build:
       context: ./frontend
-    container_name: aps_lab_front
+    container_name: monitor_front
     environment:
       NEXT_PUBLIC_API_URL: http://localhost:8000
       NEXT_PUBLIC_MQTT_WS_URL: ws://localhost:9001
@@ -74,7 +74,7 @@ services:
   ops:
     build:
       context: ./frontend-ops
-    container_name: aps_lab_ops
+    container_name: monitor_ops
     environment:
       NEXT_PUBLIC_API_URL: http://localhost:8000
       NEXT_PUBLIC_MQTT_WS_URL: ws://localhost:9001

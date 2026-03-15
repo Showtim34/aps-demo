@@ -34,14 +34,14 @@ class Settings(BaseSettings):
         extra="ignore",
     )
 
-    app_name: str = "APS Lab Monitor"
+    app_name: str = "Factory Monitor"
     app_env: Literal["development", "test", "production"] = "development"
     app_version: str = "1"
     app_debug: bool = True
     api_v1_prefix: str = "/api/v1"
     secret_key: str = "change-me-in-production"
     access_token_expire_minutes: int = 60
-    database_url: str = "postgresql+psycopg://apslab:apslab@db:5432/apslab"
+    database_url: str = "postgresql+psycopg://monitor:monitor@db:5432/monitor"
     first_admin_email: str = "admin@example.com"
     first_admin_password: str = "admin123"
     cors_origins: list[str] = ["http://localhost:3000"]
@@ -49,8 +49,8 @@ class Settings(BaseSettings):
     mqtt_host: str = "mosquitto"
     mqtt_port: int = 1883
     mqtt_ws_url: str = "ws://localhost:9001"
-    mqtt_telemetry_topic: str = "aps/telemetry/measurements"
-    mqtt_events_topic_prefix: str = "aps/events"
+    mqtt_telemetry_topic: str = "monitor/telemetry/measurements"
+    mqtt_events_topic_prefix: str = "monitor/events"
 
     @computed_field  # type: ignore[prop-decorator]
     @property

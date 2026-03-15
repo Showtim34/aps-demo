@@ -1,11 +1,11 @@
-const TOKEN_KEY = "aps_lab_token";
+const TOKEN_KEY = "factory_monitor_token";
 
 export function persistToken(token: string) {
   if (typeof window === "undefined") {
     return;
   }
   localStorage.setItem(TOKEN_KEY, token);
-  document.cookie = `aps_lab_token=${token}; path=/; max-age=86400; samesite=lax`;
+  document.cookie = `factory_monitor_token=${token}; path=/; max-age=86400; samesite=lax`;
 }
 
 export function getStoredToken(): string | null {
@@ -20,5 +20,5 @@ export function clearStoredToken() {
     return;
   }
   localStorage.removeItem(TOKEN_KEY);
-  document.cookie = "aps_lab_token=; path=/; max-age=0; samesite=lax";
+  document.cookie = "factory_monitor_token=; path=/; max-age=0; samesite=lax";
 }

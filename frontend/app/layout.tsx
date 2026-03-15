@@ -2,7 +2,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "APS Lab Monitor",
+  title: "Factory Monitor",
   description: "Industrial monitoring demo built with Next.js and FastAPI.",
 };
 

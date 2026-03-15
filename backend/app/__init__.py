@@ -1,1 +1,1 @@
-"""APS Lab Monitor backend package."""
+"""Factory Monitor backend package."""

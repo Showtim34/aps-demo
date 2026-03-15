@@ -7,7 +7,7 @@ export default function LoginPage() {
     <main className="auth-page">
       <section className="auth-panel">
         <div>
-          <p className="eyebrow">APS Lab Monitor</p>
+          <p className="eyebrow">Factory Monitor</p>
           <h1>Console d&apos;administration</h1>
           <p className="muted">
             Connectez-vous avec le compte de démonstration pour superviser les

@@ -87,7 +87,7 @@ export default function OperationsPage() {
     <main className="ops-shell">
       <header className="ops-header">
         <div>
-          <p className="eyebrow">APS Lab Ops</p>
+          <p className="eyebrow">Factory Ops</p>
           <h1>Pilotage des injections</h1>
           <p className="muted">
             Cette interface ne remplace pas le dashboard. Elle sert à alimenter

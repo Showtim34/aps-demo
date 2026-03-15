@@ -55,7 +55,9 @@ class MqttRuntime:
         if self.started or not settings.mqtt_enabled:
             return
 
-        client = mqtt.Client(mqtt.CallbackAPIVersion.VERSION2, client_id="aps-lab-api")
+        client = mqtt.Client(
+            mqtt.CallbackAPIVersion.VERSION2, client_id="factory-monitor-api"
+        )
         client.on_connect = self._on_connect
         client.on_message = self._on_message
         client.on_disconnect = self._on_disconnect

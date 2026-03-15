@@ -1,4 +1,4 @@
-const TOKEN_KEY = "aps_lab_ops_token";
+const TOKEN_KEY = "factory_monitor_ops_token";
 
 export function saveToken(token: string) {
   if (typeof window === "undefined") {

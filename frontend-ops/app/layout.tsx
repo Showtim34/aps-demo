@@ -2,7 +2,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "APS Lab Ops Console",
+  title: "Factory Ops Console",
   description: "Operational console for creating machines and triggering alerts.",
 };
 

@@ -1,6 +1,6 @@
-# APS Lab Monitor
+# Factory Monitor
 
-APS Lab Monitor est un mini projet full stack de supervision industrielle. Il a été conçu comme un support d'apprentissage sérieux pour comprendre une architecture backend Python moderne avec FastAPI, SQLAlchemy, Pydantic, Alembic, JWT et un front Next.js lisible.
+Factory Monitor est un mini projet full stack de supervision industrielle. Il a été conçu comme un support d'apprentissage sérieux pour comprendre une architecture backend Python moderne avec FastAPI, SQLAlchemy, Pydantic, Alembic, JWT et un front Next.js lisible.
 
 ## Objectif du projet
 
@@ -307,7 +307,7 @@ docker compose exec api pytest
 
 ## Flux complet d'une mesure
 
-1. Une mesure arrive soit par HTTP, soit par MQTT sur `aps/telemetry/measurements`.
+1. Une mesure arrive soit par HTTP, soit par MQTT sur `monitor/telemetry/measurements`.
 2. Le backend Python valide le payload avec `MeasurementCreate`.
 3. `MeasurementService` vérifie que la machine existe.
 4. `MeasurementRepository` écrit la mesure en base.
@@ -323,13 +323,13 @@ docker compose exec api pytest
 Le projet montre maintenant deux usages complémentaires de MQTT:
 
 - Python backend avec `paho-mqtt`
-  - l'API s'abonne au topic `aps/telemetry/measurements`
+  - l'API s'abonne au topic `monitor/telemetry/measurements`
   - elle consomme les messages et applique la logique métier normale
-  - elle publie ensuite des événements sur `aps/events/dashboard`
+  - elle publie ensuite des événements sur `monitor/events/dashboard`
 
 - Next.js avec `mqtt.js`
-  - le dashboard principal sur `:3000` s'abonne à `aps/events/dashboard`
-  - la console ops sur `:4000` publie des mesures sur `aps/telemetry/measurements`
+  - le dashboard principal sur `:3000` s'abonne à `monitor/events/dashboard`
+  - la console ops sur `:4000` publie des mesures sur `monitor/telemetry/measurements`
 
 Ainsi, tu vois à la fois:
 

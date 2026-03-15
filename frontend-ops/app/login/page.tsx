@@ -7,7 +7,7 @@ export default function LoginPage() {
     <main className="login-page">
       <section className="login-card">
         <div>
-          <p className="eyebrow">APS Lab Ops</p>
+          <p className="eyebrow">Factory Ops</p>
           <h1>Console d&apos;actions</h1>
           <p className="muted">
             Interface dédiée à l&apos;injection de données de démonstration, à la

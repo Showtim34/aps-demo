@@ -85,7 +85,7 @@ Exemple :
 
 ```python
 class Settings(BaseSettings):
-    app_name: str = "APS Lab Monitor"
+    app_name: str = "Factory Monitor"
     app_debug: bool = True
     database_url: str = "postgresql+psycopg://..."
 ```
@@ -305,7 +305,7 @@ Le front ou un outil appelle directement `POST /api/v1/measurements`.
 Une application publie une mesure sur :
 
 ```text
-aps/telemetry/measurements
+monitor/telemetry/measurements
 ```
 
 Le backend Python, via [backend/app/realtime/mqtt.py](/home/nico/dev/aps-lab-monitor/backend/app/realtime/mqtt.py), est abonné à ce topic.
@@ -317,7 +317,7 @@ Important : le consommateur MQTT ne réécrit pas la logique métier. Il reconst
 Après chaque mesure traitée, le backend publie un événement MQTT sur :
 
 ```text
-aps/events/dashboard
+monitor/events/dashboard
 ```
 
 Le front `:3000` s'abonne à ce topic avec `mqtt.js`. Dès qu'un événement arrive, il recharge ou remplace son état local avec le résumé envoyé par le backend.

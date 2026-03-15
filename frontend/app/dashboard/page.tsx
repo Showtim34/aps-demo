@@ -123,7 +123,7 @@ export default function DashboardPage() {
     <main className="page-shell">
       <header className="page-header">
         <div>
-          <p className="eyebrow">APS Lab Monitor</p>
+          <p className="eyebrow">Factory Monitor</p>
           <h1>Dashboard de supervision</h1>
           <p className="muted">
             Vue synthétique des sites, machines, alertes actives et dernières

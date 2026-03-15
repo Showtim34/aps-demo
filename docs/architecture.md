@@ -1,4 +1,4 @@
-# Architecture APS Lab Monitor
+# Architecture Factory Monitor
 
 ## Circulation d'une requête
 
